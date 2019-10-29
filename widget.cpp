@@ -61,7 +61,13 @@ Widget::Widget(QWidget *parent)
 //    QRegExpValidator *validator1 = new QRegExpValidator(rx1, this);
 //    ui->lineEdit_ProductCode->setValidator( validator1 );
 
-//    // 生产序号：限制输入为整数，范围为1-999
+//    ui->lineEdit_ProductCode->setValidator(new QIntValidator(1, 9999, ui->lineEdit_ProductCode));
+//    QRegExp rx1("[1-9][1-9][1-9][1-9]");
+//    QRegExpValidator *validator1 = new QRegExpValidator(rx1, this);
+//    ui->lineEdit_ProductCode->setValidator( validator1 );
+
+
+    // 生产序号：限制输入为整数，范围为1-999
 //    QRegExp rx2("[1-9]\\d{0,2}");
 //    QRegExpValidator *validator2 = new QRegExpValidator(rx2, this);
 //    ui->lineEdit_ProductSerialNum->setValidator( validator2 );
@@ -696,3 +702,64 @@ void MyProgressDlg::keyPressEvent(QKeyEvent *event)
     }
 }
 
+QString Widget::formatInput(QString &str, uint32_t width_limit)
+{
+    ulong data = str.toULong(nullptr, 10);
+    QString ret("");
+    uint32_t zero_num = 0;
+
+    if( data < 10 ){
+        uint32_t zero_num = width_limit - 1;
+        while(zero_num--)
+            ret.append("0");
+
+        ret.append(QString::number(data, 10));
+    }else if(data < 100){
+        uint32_t zero_num = width_limit - 2;
+        while(zero_num--)
+            ret.append("0");
+
+        ret.append(QString::number(data, 10));
+    }else if(data < 1000){
+        uint32_t zero_num = width_limit - 3;
+        while(zero_num--)
+            ret.append("0");
+
+        ret.append(QString::number(data, 10));
+    }
+
+    return ret;
+}
+
+void Widget::on_lineEdit_ProductSerialNum_textEdited(const QString &arg1)
+{
+//    QString str = ui->lineEdit_ProductSerialNum->text();
+//    quint32 len = ui->lineEdit_ProductSerialNum->text().length();
+
+//    QString mystr = formatInput(str, 4);
+//    qDebug() << "mystr: " << mystr;
+
+//    if(len > 3 ){
+//        QString fix_str = str;
+//        fix_str.remove(3, 1);
+//        ui->lineEdit_ProductSerialNum->setText(fix_str);
+//    }
+
+//    ulong data = str.toULong(nullptr, 10);
+//    qDebug() << "data: "<< str.toULong(nullptr, 10);
+//    if( (data < 1 ) || (data > 999)) {
+//        QMessageBox::warning(this, "输入错误", "序号范围是1-999", u8"重新输入");
+//        ui->lineEdit_ProductSerialNum->clear();
+//    }
+}
+
+void Widget::on_lineEdit_ProductCode_textEdited(const QString &arg1)
+{
+//    QString str = ui->lineEdit_ProductSerialNum->text();
+//    ulong data = str.toULong(nullptr, 10);
+//    qDebug() << "data: "<< str.toULong(nullptr, 10);
+//    if( (data < 1 ) || (data > 9999)) {
+//        QMessageBox::warning(this, "输入错误", "序号范围是1-9999", u8"重新输入");
+//        ui->lineEdit_ProductSerialNum->clear();
+//    }
+}

@@ -159,6 +159,12 @@ private slots:
     void onClearDetailInfo();
     void on_textBrowser_DetailInfo_customContextMenuRequested(const QPoint &pos);
 
+    void on_lineEdit_ProductSerialNum_textEdited(const QString &arg1);
+
+    void on_lineEdit_ProductCode_textEdited(const QString &arg1);
+
+    QString formatInput(QString &str, uint32_t width_limit);
+
 private:
     void logMsg(QString msg);
 
