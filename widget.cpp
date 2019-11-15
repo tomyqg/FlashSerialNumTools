@@ -763,3 +763,26 @@ void Widget::on_lineEdit_ProductCode_textEdited(const QString &arg1)
 //        ui->lineEdit_ProductSerialNum->clear();
 //    }
 }
+
+void Widget::on_pushButton_clicked()
+{
+    QMessageBox::about(this, tr("帮助"), tr("\r\n[注意]\r\n操作软件前，请先确保电脑已经通过网络(WIFI或者网线)连接到了充电站，然后执行以下操作\r\n"
+                                          "\r\n[升级步骤]\r\n"
+                                          "1.修改【IP地址】为充电站的IP地址(根据实际情况填写)，“端口”填写8899)\r\n"
+                                          "2.在【生产序号】所在行的最后一栏，输入序列号，范围为：001-999，格式固定为三个数字，左边以0填充\r\n"
+                                          "3.在【产品编码】所在行的最后一栏，输入序列号，范围为：0001-9999，格式固定为四个数字，左边以0填充\r\n"
+                                          "4.点击下载\r\n"
+                                          "5.下载完成后，关闭软件\r\n"
+                                          "\r\n[提示]\r\n"
+                                          "1.点击连接后，如果3s内没有连接成功，会提示连接失败\r\n"));
+}
+
+void Widget::on_pushButton_2_clicked()
+{
+    QMessageBox::about(this, tr("关于"), tr("功能: 充电机序列号下载软件(海康定制版专用)\r\n"
+                                          "版本:  V1.0.0\r\n"
+                                          "编译时间:  20191027 20:34\r\n"
+                                          "作者:  李扬\r\n"
+                                          "邮箱:  liyang@ecthf.com\r\n"
+                                          "公司：安徽博微智能电气有限公司"));
+}

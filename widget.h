@@ -165,6 +165,10 @@ private slots:
 
     QString formatInput(QString &str, uint32_t width_limit);
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     void logMsg(QString msg);
 
